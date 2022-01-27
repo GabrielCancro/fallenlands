@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://font/IMFePIsc28P_0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://prefab/Unit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://assets/land.png" type="Texture" id=4]
 [ext_resource path="res://Camera2D.gd" type="Script" id=5]
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 640, 228, 773, 309, 690, 384, 647, 406, 569, 402, 513, 375, 776, 649, 793, 691, 762, 696, 741, 643, 816, 526, 833, 570, 892, 510, 838, 482, 857, 450, 559, -97, 588, -105, 596, -22, 571, -13, 577, 54, 547, 61, 794, 461, 587, 136, 544, 127, 646, 158, 673, 195, 278, 317, 277, 289, 328, 277, 352, 322, 440, 216, 328, 236, 376, 207 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 9 ), PoolIntArray( 6, 9, 10, 11 ), PoolIntArray( 12, 11, 10, 13, 14 ), PoolIntArray( 15, 16, 17, 18 ), PoolIntArray( 18, 17, 19, 20 ), PoolIntArray( 2, 14, 13, 21 ), PoolIntArray( 2, 21, 3 ), PoolIntArray( 20, 19, 22, 23 ), PoolIntArray( 24, 25, 0, 22 ), PoolIntArray( 26, 27, 28, 29 ), PoolIntArray( 30, 23, 22, 0, 5, 29 ), PoolIntArray( 31, 32, 30, 29, 28 ), PoolIntArray( 28, 26, 26 ) ]
+outlines = [ PoolVector2Array( 559, -97, 571, -13, 547, 61, 544, 127, 440, 216, 376, 207, 328, 236, 328, 277, 277, 289, 278, 317, 278, 317, 352, 322, 513, 375, 569, 402, 647, 406, 794, 461, 838, 482, 816, 526, 741, 643, 762, 696, 793, 691, 776, 649, 833, 570, 892, 510, 857, 450, 690, 384, 773, 309, 640, 228, 673, 195, 646, 158, 587, 136, 577, 54, 596, -22, 588, -105 ) ]
 
 [sub_resource type="DynamicFont" id=1]
 size = 53
@@ -19,9 +24,13 @@ __meta__ = {
 }
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0, 0, 0, 1 )
 
-[node name="Map" type="Node2D" parent="."]
+[node name="Map" type="Navigation2D" parent="."]
+
+[node name="NavMesh" type="NavigationPolygonInstance" parent="Map"]
+navpoly = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Map"]
 position = Vector2( 529, 304 )
@@ -29,52 +38,9 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="Unit" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
+position = Vector2( 514, 333 )
 
-[node name="Unit2" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit3" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit4" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit5" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit6" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit7" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit8" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit9" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit10" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit11" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit12" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit13" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit14" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit15" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
-
-[node name="Unit16" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 383 )
+[node name="Line2D" type="Line2D" parent="Map"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 light_mask = 0
