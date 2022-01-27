@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://font/IMFePIsc28P_0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://prefab/Unit.tscn" type="PackedScene" id=2]
@@ -7,9 +7,19 @@
 [ext_resource path="res://Camera2D.gd" type="Script" id=5]
 
 [sub_resource type="NavigationPolygon" id=2]
-vertices = PoolVector2Array( 640, 228, 773, 309, 690, 384, 647, 406, 569, 402, 513, 375, 776, 649, 793, 691, 762, 696, 741, 643, 816, 526, 833, 570, 892, 510, 838, 482, 857, 450, 559, -97, 588, -105, 596, -22, 571, -13, 577, 54, 547, 61, 794, 461, 587, 136, 544, 127, 646, 158, 673, 195, 278, 317, 277, 289, 328, 277, 352, 322, 440, 216, 328, 236, 376, 207 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 9 ), PoolIntArray( 6, 9, 10, 11 ), PoolIntArray( 12, 11, 10, 13, 14 ), PoolIntArray( 15, 16, 17, 18 ), PoolIntArray( 18, 17, 19, 20 ), PoolIntArray( 2, 14, 13, 21 ), PoolIntArray( 2, 21, 3 ), PoolIntArray( 20, 19, 22, 23 ), PoolIntArray( 24, 25, 0, 22 ), PoolIntArray( 26, 27, 28, 29 ), PoolIntArray( 30, 23, 22, 0, 5, 29 ), PoolIntArray( 31, 32, 30, 29, 28 ), PoolIntArray( 28, 26, 26 ) ]
-outlines = [ PoolVector2Array( 559, -97, 571, -13, 547, 61, 544, 127, 440, 216, 376, 207, 328, 236, 328, 277, 277, 289, 278, 317, 278, 317, 352, 322, 513, 375, 569, 402, 647, 406, 794, 461, 838, 482, 816, 526, 741, 643, 762, 696, 793, 691, 776, 649, 833, 570, 892, 510, 857, 450, 690, 384, 773, 309, 640, 228, 673, 195, 646, 158, 587, 136, 577, 54, 596, -22, 588, -105 ) ]
+vertices = PoolVector2Array( 444, 152, 482, 169, 441, 199, 378, 197, 115, 392, 150, 406, 116, 446, 35, 472, 17, 516, -168, 405, -170, 343, -133, 291, -91, 279, -39, 268, 279, 339, 245, 339, 247, 281, 279, 280, 265, 70, 392, 101, 245, 113, 273, 31, 346, 7, 398, -6, 412, 37, 180, 159, 174, 120, 206, 111, 332, 233, 147, 204, 144, 176, 182, 298, 116, 353, -13, 239, 40, 227, 71, 242, 88, 270, 121, 261, 125, 226, 317, 273 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 7, 8, 9, 10, 11, 12, 13 ), PoolIntArray( 14, 15, 16, 17 ), PoolIntArray( 18, 19, 0, 3, 20 ), PoolIntArray( 21, 22, 23, 24, 19, 18 ), PoolIntArray( 25, 26, 27, 20, 3, 28, 16 ), PoolIntArray( 29, 30, 25, 16, 31 ), PoolIntArray( 32, 4, 7, 13, 33, 34, 35, 36 ), PoolIntArray( 31, 32, 36, 37 ), PoolIntArray( 31, 37, 38, 29 ), PoolIntArray( 17, 16, 28, 39 ) ]
+outlines = [ PoolVector2Array( 398, -6, 412, 37, 392, 101, 444, 152, 482, 169, 441, 199, 378, 197, 332, 233, 317, 273, 279, 280, 279, 339, 245, 339, 247, 281, 182, 298, 116, 353, 115, 392, 150, 406, 116, 446, 35, 472, 17, 516, -168, 405, -170, 343, -133, 291, -91, 279, -39, 268, -13, 239, 40, 227, 71, 242, 88, 270, 121, 261, 125, 226, 147, 204, 144, 176, 180, 159, 174, 120, 206, 111, 245, 113, 265, 70, 273, 31, 346, 7 ) ]
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 364, 387, 209, 391, 164, 366, 210, 340, 246, 327, 275, 326, 356, 345, 659, 629, 700, 650, 717, 681, 625, 705, 527, 705, 254, 286, 280, 284, 144, 531, 103, 582, 55, 564, 70, 507, 107, 491, 136, 513, 188, 518, 174, 490, 226, 473, 167, 469, 208, 427, 716, 444, 804, 474, 810, 524, 758, 579, 710, 553, 674, 456, 638, 436, 662, 587, 583, 446, 348, 322, 306, 538, 421, 399, 497, 375, 518, 394, 537, 433, 414, 698, 273, 495, 286, 570, 308, 692, 275, 644, 280, 589 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6 ), PoolIntArray( 7, 8, 9, 10, 11 ), PoolIntArray( 12, 13, 5, 4 ), PoolIntArray( 14, 15, 16, 17, 18, 19 ), PoolIntArray( 20, 14, 19, 21, 22 ), PoolIntArray( 22, 21, 23, 24, 0 ), PoolIntArray( 25, 26, 27, 28, 29, 30 ), PoolIntArray( 31, 30, 29, 32, 33 ), PoolIntArray( 5, 34, 6 ), PoolIntArray( 35, 36, 37, 38, 39, 11, 40 ), PoolIntArray( 24, 1, 0 ), PoolIntArray( 41, 22, 0 ), PoolIntArray( 35, 41, 0, 36 ), PoolIntArray( 33, 32, 7, 11, 39 ), PoolIntArray( 42, 35, 40, 43, 44, 45 ) ]
+outlines = [ PoolVector2Array( 55, 564, 70, 507, 107, 491, 136, 513, 174, 490, 167, 469, 208, 427, 209, 391, 164, 366, 210, 340, 246, 327, 254, 286, 280, 284, 275, 326, 348, 322, 356, 345, 364, 387, 421, 399, 497, 375, 518, 394, 537, 433, 583, 446, 638, 436, 674, 456, 716, 444, 804, 474, 810, 524, 758, 579, 710, 553, 662, 587, 659, 629, 700, 650, 717, 681, 625, 705, 527, 705, 414, 698, 308, 692, 275, 644, 280, 589, 286, 570, 306, 538, 273, 495, 226, 473, 188, 518, 144, 531, 103, 582 ) ]
+
+[sub_resource type="NavigationPolygon" id=4]
+vertices = PoolVector2Array( 942, 583, 888, 600, 884, 536, 1046, 495, 1175, 346, 1244, 330, 1245, 398, 1138, 434, 793, 536, 798, 496, 880, 488, 694, 123, 695, 11, 756, 12, 807, 49, 798, 93, 854, 440, 781, 409, 721, 376, 761, 299, 906, 179, 986, 214, 1134, 294, 669, 226, 675, 183, 829, 166, 1061, 193, 1131, 213 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 2, 8, 9, 10, 3 ), PoolIntArray( 11, 12, 13, 14, 15 ), PoolIntArray( 16, 17, 18, 19, 20, 21, 22 ), PoolIntArray( 23, 24, 11, 15, 25, 19 ), PoolIntArray( 19, 25, 20 ), PoolIntArray( 26, 27, 22, 21 ), PoolIntArray( 7, 3, 10, 16, 22, 4 ) ]
+outlines = [ PoolVector2Array( 695, 11, 694, 123, 675, 183, 669, 226, 761, 299, 721, 376, 781, 409, 854, 440, 880, 488, 798, 496, 793, 536, 884, 536, 888, 600, 942, 583, 1046, 495, 1138, 434, 1245, 398, 1244, 330, 1175, 346, 1134, 294, 1131, 213, 1061, 193, 986, 214, 906, 179, 829, 166, 798, 93, 807, 49, 756, 12 ) ]
 
 [sub_resource type="DynamicFont" id=1]
 size = 53
@@ -32,13 +42,19 @@ color = Color( 0, 0, 0, 1 )
 [node name="NavMesh" type="NavigationPolygonInstance" parent="Map"]
 navpoly = SubResource( 2 )
 
+[node name="NavMesh2" type="NavigationPolygonInstance" parent="Map"]
+navpoly = SubResource( 3 )
+
+[node name="NavMesh3" type="NavigationPolygonInstance" parent="Map"]
+navpoly = SubResource( 4 )
+
 [node name="Sprite" type="Sprite" parent="Map"]
 position = Vector2( 529, 304 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="Unit" parent="Map" instance=ExtResource( 2 )]
-position = Vector2( 514, 333 )
+position = Vector2( 514, 450 )
 
 [node name="Line2D" type="Line2D" parent="Map"]
 
@@ -90,6 +106,7 @@ __meta__ = {
 }
 
 [node name="btn_quit" type="Button" parent="Camera2D/CanvasLayer/UI"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

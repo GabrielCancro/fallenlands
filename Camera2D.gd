@@ -20,7 +20,7 @@ func _input(event):
 			print("adasdasdasd")
 			mouse_start_pos = event.position
 			screen_start_position = position
-			dragging = true			
+			dragging = true
 		else:
 			dragging = false
 	if event is InputEventMouseMotion and dragging:

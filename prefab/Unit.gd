@@ -3,7 +3,7 @@ extends Node2D
 var goto = position
 var path
 var state
-var speed = 30
+var speed = 80
 
 func _ready():
 	$AnimationPlayer.play("idle")
@@ -14,11 +14,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var vecGoto = (goto - position)
-	if vecGoto.length() > 50: 
+	if vecGoto.length() > 10: 
 		set_state("walk")
-		position += vecGoto.normalized() * delta * speed		
+		position += vecGoto.normalized() * delta * speed
 	else: 
-		set_state("idle")
+		if(path.size()>1):
+			goto = path[1]
+			path.remove(0)
+		else:
+			set_state("idle")
 
 func set_state(new_state):
 	if(state == new_state): return
@@ -26,9 +30,9 @@ func set_state(new_state):
 	$AnimationPlayer.play(new_state)
 
 func set_goto():
-	var destine = Vector2(rand_range(50,1024), rand_range(50,600))
+	goto = position
+	var destine = Vector2(rand_range(0,1024), rand_range(0,600))
 	path = (GC.Map as Navigation2D).get_simple_path(position,destine)
-	goto = path[1]
 	(GC.Map.get_node("Line2D") as Line2D).points = path
 
 
