@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://font/IMFePIsc28P_0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://prefab/Unit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
-
-[sub_resource type="LargeTexture" id=2]
+[ext_resource path="res://assets/land.png" type="Texture" id=4]
+[ext_resource path="res://Camera2D.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 53
@@ -18,10 +18,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
 [node name="Map" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Map"]
-texture = SubResource( 2 )
+position = Vector2( 529, 304 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="Unit" parent="Map" instance=ExtResource( 2 )]
 position = Vector2( 514, 383 )
@@ -71,29 +76,46 @@ position = Vector2( 514, 383 )
 [node name="Unit16" parent="Map" instance=ExtResource( 2 )]
 position = Vector2( 514, 383 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+light_mask = 0
+current = true
+script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="UI" type="Control" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer/UI"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="Camera2D/CanvasLayer/UI"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="btn_start" type="Button" parent="."]
+[node name="btn_start" type="Button" parent="Camera2D/CanvasLayer/UI"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -129.0
+margin_left = -133.0
 margin_top = -38.5
-margin_right = 129.0
+margin_right = 133.0
 margin_bottom = 38.5
 custom_fonts/font = SubResource( 1 )
 text = "Start Game"
@@ -101,15 +123,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn_quit" type="Button" parent="."]
+[node name="btn_quit" type="Button" parent="Camera2D/CanvasLayer/UI"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -129.0
-margin_top = 92.0
-margin_right = 137.0
-margin_bottom = 169.0
+margin_left = -133.0
+margin_top = 94.0
+margin_right = 133.0
+margin_bottom = 171.0
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 __meta__ = {
