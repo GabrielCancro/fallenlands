@@ -18,7 +18,7 @@ func _process(delta):
 		set_state("walk")
 		position += vecGoto.normalized() * delta * speed
 	else: 
-		if(path.size()>1):
+		if(path.size() > 1):
 			goto = path[1]
 			path.remove(0)
 		else:
@@ -29,9 +29,11 @@ func set_state(new_state):
 	state = new_state
 	$AnimationPlayer.play(new_state)
 
-func set_goto():
+func set_goto(pos):
 	goto = position
-	var destine = Vector2(rand_range(0,1024), rand_range(0,600))
+	var destine
+	if(pos): destine = pos
+	else: destine = Vector2(rand_range(0,1024), rand_range(0,600))
 	path = (GC.Map as Navigation2D).get_simple_path(position,destine)
 	(GC.Map.get_node("Line2D") as Line2D).points = path
 

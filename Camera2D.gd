@@ -14,7 +14,7 @@ func _process(delta):
 	pass
 #	position.x += 5
 
-func _input(event):	
+func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			print("adasdasdasd")
@@ -25,3 +25,6 @@ func _input(event):
 			dragging = false
 	if event is InputEventMouseMotion and dragging:
 		position = zoom * (mouse_start_pos - event.position) + screen_start_position
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_Q:
+			GC.emit_signal("change_unit_goto",get_viewport().get_mouse_position())
