@@ -4,6 +4,16 @@ signal change_unit_goto
 signal low_update
 var trop_selected = 0
 var units_from_team = [[],[],[],[],[]]
+var types_units = {
+	"soldier": preload("res://assets/unit3.png"),
+	"archer": preload("res://assets/unit4.png"),
+	"barbarien": preload("res://assets/unit5.png"),
+	"huruk-hai": preload("res://assets/unit6.png"),
+}
+
+var options = {
+	hp_bar_visible = true
+}
 
 onready var Map = get_node("/root/Main/Map")
 # Declare member variables here. Examples:

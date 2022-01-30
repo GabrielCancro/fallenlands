@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://prefab/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/unit3.png" type="Texture" id=2]
 [ext_resource path="res://assets/light.png" type="Texture" id=3]
+[ext_resource path="res://assets/prgBar2.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/prgBar.jpg" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -72,3 +74,20 @@ visible = false
 shape = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="prgBar" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_top = -41.0
+margin_right = 38.0
+margin_bottom = -31.0
+rect_scale = Vector2( 0.5, 0.5 )
+value = 25.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

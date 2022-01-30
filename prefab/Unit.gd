@@ -7,15 +7,17 @@ var state
 var speed = 80
 export var trop_id = 1
 export var team = 1
-export var unit_texture:Texture
+export var type_unit = "soldier"
 onready var trop = GC.Map.get_node("Trop"+str(trop_id))
 var enemy_target = null
 var ignore_enemy = false
 var reload_atack = 0
 var reload_vel = 5
 var hp = 25
+var hpm = 25
 var atk_damage = 5
 var atackers = 0
+
 
 func _ready():
 	$AnimationPlayer.play("idle")
@@ -25,8 +27,11 @@ func _ready():
 	GC.connect("low_update",self,"low_update")
 	$Vision.connect("body_entered",self,"_on_custom_Area2D_body_entered")
 	$Vision.connect("body_exited",self,"_on_custom_Area2D_body_exited")
-	$Sprite.texture = unit_texture
+	$Sprite.texture = GC.types_units[type_unit]
 	if trop: trop.units.append(self)
+	$prgBar.visible = GC.options.hp_bar_visible
+	$prgBar.value = hp
+	$prgBar.max_value = hpm
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -59,7 +64,7 @@ func check_goto():
 		if(destine == trop.position): return
 		destine = trop.position
 	else: 
-		if(destine == enemy_target.position): return
+		if(destine.distance_to(enemy_target.position)<20) : return
 		destine = enemy_target.position
 		
 	path = (GC.Map as Navigation2D).get_simple_path(position,destine,false)	
@@ -101,7 +106,8 @@ func _on_custom_Area2D_body_exited(body):
 
 func damage(enemy):
 	if !enemy_target: enemy_target = enemy
-	hp -= enemy.atk_damage	
+	hp -= enemy.atk_damage
+	$prgBar.value = hp
 	$Tween.interpolate_property($Sprite,"modulate",Color(1,.3,.3,1),Color(1,1,1,1),.4,Tween.TRANS_EXPO,Tween.EASE_IN)
 	$Tween.start()
 	if hp < 0: 
