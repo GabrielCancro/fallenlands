@@ -3,6 +3,7 @@ extends Node
 signal change_unit_goto
 signal low_update
 var trop_selected = 0
+var units_from_team = [[],[],[],[],[]]
 
 onready var Map = get_node("/root/Main/Map")
 # Declare member variables here. Examples:
@@ -23,3 +24,15 @@ func low_update():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func check_enemy_in_range(unit):
+	var i = 0;
+	var min_dist = 999999;
+	var objetive = null;
+	for team_array in units_from_team:
+		if i==unit.team: continue
+		for enemy in team_array:
+			var dist = (unit.position as Vector2).distance_to(enemy.position)
+			if(dist<min_dist): 
+				min_dist = dist
+				objetive = enemy

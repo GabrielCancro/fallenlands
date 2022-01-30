@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://prefab/Unit.gd" type="Script" id=1]
-[ext_resource path="res://assets/skeleton.png" type="Texture" id=2]
+[ext_resource path="res://assets/unit3.png" type="Texture" id=2]
 [ext_resource path="res://assets/light.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.95, 1.03 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.48, 0.52 ), Vector2( 0.5, 0.5 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -39,6 +39,9 @@ tracks/0/keys = {
 "values": [ 0.0, 3.0, -3.0, 0.0 ]
 }
 
+[sub_resource type="CircleShape2D" id=4]
+radius = 140.0
+
 [node name="KUnit" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -46,7 +49,8 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 6 )
+position = Vector2( 1, -10 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -20.594 )
 
@@ -60,3 +64,11 @@ position = Vector2( 0, -16 )
 texture = ExtResource( 3 )
 texture_scale = 0.5
 mode = 2
+
+[node name="Vision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+visible = false
+shape = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]

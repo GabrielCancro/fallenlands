@@ -8,7 +8,7 @@ extends Navigation2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_add_obstacle($Obstacle1)
+#	_add_obstacle($Obstacle1)
 	pass # Replace with function body.
 
 

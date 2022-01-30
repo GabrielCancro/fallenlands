@@ -1,6 +1,7 @@
 extends Node2D
 
 export var id = 1
+var units = []
 
 func _ready():
 	GC.connect("change_unit_goto",self,"set_goto")
