@@ -2,6 +2,7 @@ extends Node
 
 signal change_unit_goto
 signal low_update
+var trop_selected = 0
 
 onready var Map = get_node("/root/Main/Map")
 # Declare member variables here. Examples:
