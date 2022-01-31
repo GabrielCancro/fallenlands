@@ -4,6 +4,7 @@ signal change_unit_goto
 signal low_update
 var trop_selected = 0
 var units_from_team = [[],[],[],[],[]]
+var selected_element = null
 var types_units = {
 	"soldier": preload("res://assets/unit3.png"),
 	"archer": preload("res://assets/unit4.png"),
@@ -16,6 +17,7 @@ var options = {
 }
 
 onready var Map = get_node("/root/Main/Map")
+onready var Cursor = get_node("/root/Main/Cursor")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -46,3 +48,6 @@ func check_enemy_in_range(unit):
 			if(dist<min_dist): 
 				min_dist = dist
 				objetive = enemy
+
+func select_element(elem):
+	selected_element = elem
