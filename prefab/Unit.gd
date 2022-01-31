@@ -8,7 +8,7 @@ var speed = 80
 export var trop_id = 1
 export var team = 1
 export var type_unit = "soldier"
-onready var trop = GC.Map.get_node("Trop"+str(trop_id))
+onready var trop = GC.Map.get_node("Units/Trop"+str(trop_id))
 var enemy_target = null
 var ignore_enemy = false
 var reload_atack = 0
@@ -81,14 +81,14 @@ func low_update():
 
 func recheck_enemy():
 	for en in $Vision.get_overlapping_bodies():
-		if en is TileMap: continue
+		if !en.get("type_unit"): continue
 		if en.team == team: continue
 		if en.hp <= 0: continue
 		enemy_target = en
 		break
 		
 func _on_custom_Area2D_body_entered(body):
-	if body is TileMap: return
+	if !body.get("type_unit"): return
 #	if team != 1: return
 	if enemy_target != null && enemy_target.atackers <= body.atackers: return
 	if body.team == team: return
@@ -97,7 +97,7 @@ func _on_custom_Area2D_body_entered(body):
 	print(enemy_target)
 
 func _on_custom_Area2D_body_exited(body):
-	if body is TileMap: return
+	if !body.get("type_unit"): return
 #	if team != 1: return
 	if enemy_target == body: 
 		enemy_target.atackers -= 1
