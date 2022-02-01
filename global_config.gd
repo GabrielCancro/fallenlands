@@ -51,3 +51,4 @@ func check_enemy_in_range(unit):
 
 func select_element(elem):
 	selected_element = elem
+	Cursor.position.y = -9999
