@@ -25,8 +25,8 @@ func _ready():
 	reload_vel += rand_range(0,2)
 	GC.units_from_team[team].append(self)
 	GC.connect("low_update",self,"low_update")
-	$Vision.connect("body_entered",self,"_on_custom_Area2D_body_entered")
-	$Vision.connect("body_exited",self,"_on_custom_Area2D_body_exited")
+	$Vision.connect("body_entered",self,"recheck_enemy")
+	$Vision.connect("body_exited",self,"recheck_enemy")
 	$Sprite.texture = GC.types_units[type_unit]
 	if trop: trop.units.append(self)
 	$prgBar.visible = GC.options.hp_bar_visible
@@ -60,13 +60,14 @@ func set_state(new_state):
 
 func check_goto():
 	if !enemy_target || ignore_enemy:
-		if !trop : return
+		if trop: return
 		if(destine == trop.position): return
 		destine = trop.position
 	else: 
 		if(destine.distance_to(enemy_target.position)<20) : return
 		destine = enemy_target.position
-		
+	
+#	print("GET PATH ",randf())
 	path = (GC.Map as Navigation2D).get_simple_path(position,destine,false)	
 	if(path.size()>=1): goto = path[0]
 	(GC.Map.get_node("Line2D") as Line2D).points = path
@@ -79,7 +80,9 @@ func low_update():
 	check_goto()
 	if reload_atack < 100: reload_atack += reload_vel
 
-func recheck_enemy():
+func recheck_enemy(body=null):
+	print("recheck_enemy.. ",randf())
+	enemy_target = null
 	for en in $Vision.get_overlapping_bodies():
 		if !en.get("type_unit"): continue
 		if en.team == team: continue
@@ -87,22 +90,22 @@ func recheck_enemy():
 		enemy_target = en
 		break
 		
-func _on_custom_Area2D_body_entered(body):
-	if !body.get("type_unit"): return
-#	if team != 1: return
-	if enemy_target != null && enemy_target.atackers <= body.atackers: return
-	if body.team == team: return
-	enemy_target = body
-	enemy_target.atackers += 1
-	print(enemy_target)
+#func _on_custom_Area2D_body_entered(body):
+#	if !body.get("type_unit"): return
+##	if team != 1: return
+#	if enemy_target != null && enemy_target.atackers <= body.atackers: return
+#	if body.team == team: return
+#	enemy_target = body
+#	enemy_target.atackers += 1
+#	print(enemy_target)
 
-func _on_custom_Area2D_body_exited(body):
-	if !body.get("type_unit"): return
-#	if team != 1: return
-	if enemy_target == body: 
-		enemy_target.atackers -= 1
-		enemy_target = null
-		print(enemy_target)
+#func _on_custom_Area2D_body_exited(body):
+#	if !body.get("type_unit"): return
+##	if team != 1: return
+#	if enemy_target == body: 
+#		enemy_target.atackers -= 1
+#		enemy_target = null
+#		print(enemy_target)
 
 func damage(enemy):
 	if !enemy_target: enemy_target = enemy

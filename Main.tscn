@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://font/IMFePIsc28P_0.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://prefab/KUnit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://assets/land.png" type="Texture" id=4]
 [ext_resource path="res://Camera2D.gd" type="Script" id=5]
@@ -121,6 +122,46 @@ tile_data = PoolIntArray( -131051, 0, 0, -131050, 0, 0, -131049, 0, 0, -131048, 
 [node name="Line2D" type="Line2D" parent="Map"]
 
 [node name="Units" type="Node2D" parent="Map"]
+
+[node name="KUnit" parent="Map/Units" instance=ExtResource( 2 )]
+position = Vector2( 40, 345 )
+trop_id = 0
+team = 2
+
+[node name="KUnit2" parent="Map/Units" instance=ExtResource( 2 )]
+position = Vector2( 246, 203 )
+trop_id = 0
+team = 2
+
+[node name="KUnit3" parent="Map/Units" instance=ExtResource( 2 )]
+position = Vector2( 797, 258 )
+trop_id = 0
+team = 2
+
+[node name="KUnit4" parent="Map/Units" instance=ExtResource( 2 )]
+position = Vector2( 1108, 394 )
+trop_id = 0
+team = 2
+
+[node name="KUnit5" parent="Map/Units" instance=ExtResource( 2 )]
+position = Vector2( 944, 536 )
+trop_id = 0
+team = 2
+
+[node name="KUnit6" parent="Map/Units" instance=ExtResource( 2 )]
+position = Vector2( 645, 500 )
+trop_id = 0
+team = 2
+
+[node name="KUnit7" parent="Map/Units" instance=ExtResource( 2 )]
+position = Vector2( 477, 693 )
+trop_id = 0
+team = 2
+
+[node name="KUnit8" parent="Map/Units" instance=ExtResource( 2 )]
+position = Vector2( 645, 710 )
+trop_id = 0
+team = 2
 
 [node name="Trop1" parent="Map/Units" instance=ExtResource( 8 )]
 position = Vector2( 342, 469 )

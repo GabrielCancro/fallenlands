@@ -52,7 +52,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 1, -10 )
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -20.594 )
 
@@ -62,6 +62,7 @@ anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 position = Vector2( 0, -16 )
 texture = ExtResource( 3 )
 texture_scale = 0.5
@@ -70,7 +71,6 @@ mode = 2
 [node name="Vision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-visible = false
 shape = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
