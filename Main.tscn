@@ -111,6 +111,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="Map"]
+visible = false
 modulate = Color( 1, 1, 1, 0.545098 )
 tile_set = SubResource( 10 )
 cell_size = Vector2( 32, 32 )
@@ -126,44 +127,55 @@ tile_data = PoolIntArray( -131051, 0, 0, -131050, 0, 0, -131049, 0, 0, -131048, 
 position = Vector2( 40, 345 )
 trop_id = 0
 team = 2
+type_unit = "barbarien"
 
 [node name="KUnit2" parent="Map/Units" instance=ExtResource( 2 )]
 position = Vector2( 246, 203 )
 trop_id = 0
 team = 2
+type_unit = "barbarien"
 
 [node name="KUnit3" parent="Map/Units" instance=ExtResource( 2 )]
 position = Vector2( 797, 258 )
 trop_id = 0
 team = 2
+type_unit = "barbarien"
 
 [node name="KUnit4" parent="Map/Units" instance=ExtResource( 2 )]
 position = Vector2( 1108, 394 )
 trop_id = 0
 team = 2
+type_unit = "barbarien"
 
 [node name="KUnit5" parent="Map/Units" instance=ExtResource( 2 )]
 position = Vector2( 944, 536 )
 trop_id = 0
 team = 2
+type_unit = "barbarien"
 
 [node name="KUnit6" parent="Map/Units" instance=ExtResource( 2 )]
 position = Vector2( 645, 500 )
 trop_id = 0
 team = 2
+type_unit = "barbarien"
 
 [node name="KUnit7" parent="Map/Units" instance=ExtResource( 2 )]
 position = Vector2( 477, 693 )
 trop_id = 0
 team = 2
+type_unit = "barbarien"
 
 [node name="KUnit8" parent="Map/Units" instance=ExtResource( 2 )]
 position = Vector2( 645, 710 )
 trop_id = 0
 team = 2
+type_unit = "barbarien"
 
 [node name="Trop" parent="Map/Units" instance=ExtResource( 8 )]
 position = Vector2( 317, 500 )
+
+[node name="Trop2" parent="Map/Units" instance=ExtResource( 8 )]
+position = Vector2( 573, 481 )
 
 [node name="Build" parent="Map" instance=ExtResource( 7 )]
 position = Vector2( 477, 471 )

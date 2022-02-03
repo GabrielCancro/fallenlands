@@ -25,7 +25,7 @@ func set_goto(pos):
 
 func _process(delta):
 	var vecGoto = (nextPoint - position)
-	if vecGoto.length() > 20: 
+	if vecGoto.length() > 40: 
 		set_state("walk")
 		move_and_slide(vecGoto.normalized() * speed)
 	else: 
@@ -38,8 +38,9 @@ func _process(delta):
 func low_update():
 	$Sprite.flip_h = (position.x > nextPoint.x)
 	z_index = position.y + 2
-	$Light2D.texture_scale = .5+randf()*.01
-	$Light2D.energy = 1-randf()*.02
+	$Light2D.texture_scale = .5+randf()*.03
+	$Light2D.texture_scale = .5+randf()*.03
+	$Light2D.energy = 1-randf()*.03
 
 func set_state(new_state):
 	if(state == new_state): return

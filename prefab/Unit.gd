@@ -4,7 +4,7 @@ var destine
 var nextPoint
 var path = []
 var state
-var speed = 80
+var speed = 100
 export var trop_id = 1
 export var team = 1
 export var type_unit = "soldier"
@@ -66,13 +66,11 @@ func check_goto():
 		if(trop and destine != trop.nextPoint): 
 			destine = trop.nextPoint
 	else: 
-		if(position.distance_to(enemy_target.position)<20) : return
+		if(position.distance_to(enemy_target.position)<45) : return
 		destine = enemy_target.position
-	
-#	print("GET PATH ",randf())
+
 	path = (GC.Map as Navigation2D).get_simple_path(position,destine,false)
 	if(path.size()>=1): nextPoint = path[0]
-#	(GC.Map.get_node("Line2D") as Line2D).points = path
 
 func low_update():
 	$Sprite.flip_h = (position.x > nextPoint.x)
@@ -81,31 +79,15 @@ func low_update():
 	if reload_atack < 100: reload_atack += reload_vel
 
 func recheck_enemy(body=null):
-#	print("recheck_enemy.. ",randf())
 	enemy_target = null
+	var dist = 99999
 	for en in $Vision.get_overlapping_bodies():
 		if !en.get("type_unit"): continue
 		if en.team == team: continue
 		if en.hp <= 0: continue
-		enemy_target = en
-		break
-		
-#func _on_custom_Area2D_body_entered(body):
-#	if !body.get("type_unit"): return
-##	if team != 1: return
-#	if enemy_target != null && enemy_target.atackers <= body.atackers: return
-#	if body.team == team: return
-#	enemy_target = body
-#	enemy_target.atackers += 1
-#	print(enemy_target)
-
-#func _on_custom_Area2D_body_exited(body):
-#	if !body.get("type_unit"): return
-##	if team != 1: return
-#	if enemy_target == body: 
-#		enemy_target.atackers -= 1
-#		enemy_target = null
-#		print(enemy_target)
+		if position.distance_to(en.position)<dist:
+			enemy_target = en
+			dist = position.distance_to(en.position)
 
 func damage(enemy):
 	if !enemy_target: enemy_target = enemy
