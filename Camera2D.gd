@@ -18,14 +18,13 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			var mouse_world = get_viewport().get_mouse_position() + position - get_viewport().size/2
-			
 			mouse_start_pos = event.position
 			screen_start_position = position
 			dragging = true
 			var el = GC.selected_element
 			if(!el): select_cursor( mouse_world )
-			if(el && el.get("type_unit") && el.trop_id):
-				GC.trop_selected = el.trop_id
+			if(el && el.get("is_trop")):
+				GC.trop_selected = el
 				GC.emit_signal("change_unit_goto",mouse_world)
 				GC.select_element(null)
 		else:
@@ -46,7 +45,7 @@ func select_cursor(pos):
 	GC.Cursor.position = pos
 	yield(get_tree().create_timer(.05),"timeout")
 	for body in (GC.Cursor as Area2D).get_overlapping_bodies():
-		if(body.get("type_unit")):
+		if(body.get("is_trop")):
 			GC.select_element(body)
 			break
 #	

@@ -89,7 +89,7 @@ size = 30
 font_data = ExtResource( 1 )
 
 [sub_resource type="CircleShape2D" id=11]
-radius = 15.1327
+radius = 26.0192
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -100,7 +100,6 @@ __meta__ = {
 }
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="Map" type="Navigation2D" parent="."]
@@ -163,12 +162,8 @@ position = Vector2( 645, 710 )
 trop_id = 0
 team = 2
 
-[node name="Trop1" parent="Map/Units" instance=ExtResource( 8 )]
-position = Vector2( 342, 469 )
-
-[node name="Trop2" parent="Map/Units" instance=ExtResource( 8 )]
-position = Vector2( 944, 394 )
-id = 2
+[node name="Trop" parent="Map/Units" instance=ExtResource( 8 )]
+position = Vector2( 317, 500 )
 
 [node name="Build" parent="Map" instance=ExtResource( 7 )]
 position = Vector2( 477, 471 )
@@ -254,6 +249,8 @@ __meta__ = {
 }
 
 [node name="Cursor" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 shape = SubResource( 11 )
