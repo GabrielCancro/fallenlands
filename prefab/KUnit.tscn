@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://prefab/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/unit3.png" type="Texture" id=2]
-[ext_resource path="res://assets/light.png" type="Texture" id=3]
 [ext_resource path="res://assets/prgBar2.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/prgBar.jpg" type="Texture" id=5]
 
@@ -42,9 +41,6 @@ tracks/0/keys = {
 "values": [ 0.0, 3.0, -3.0, 0.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 140.0
-
 [node name="KUnit" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -61,19 +57,6 @@ offset = Vector2( 0, -20.594 )
 reset_on_save = false
 anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )
-
-[node name="Light2D" type="Light2D" parent="."]
-visible = false
-position = Vector2( 0, -16 )
-texture = ExtResource( 3 )
-texture_scale = 0.5
-mode = 2
-
-[node name="Vision" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-shape = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 

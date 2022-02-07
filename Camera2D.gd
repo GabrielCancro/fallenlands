@@ -17,7 +17,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			var mouse_world = get_viewport().get_mouse_position() + position - get_viewport().size/2
+			var mouse_world = get_global_mouse_position() #get_viewport().get_mouse_position() + position - get_viewport().size/2
 			mouse_start_pos = event.position
 			screen_start_position = position
 			dragging = true

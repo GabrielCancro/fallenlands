@@ -72,4 +72,5 @@ mode = 2
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+visible = false
 shape = SubResource( 4 )

@@ -2,6 +2,8 @@ extends Node
 
 signal change_unit_goto
 signal low_update
+signal upper_low_update
+
 var trop_selected = 0
 var units_from_team = [[],[],[],[],[]]
 var selected_element = null
@@ -25,14 +27,20 @@ onready var Cursor = get_node("/root/Main/Cursor")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var timer = Timer.new()
-	timer.set_wait_time(.1)
-	timer.connect("timeout", self, "low_update")
-	get_node("/root/Main").add_child(timer)
-	timer.start()
+	var timer_low = Timer.new()
+	timer_low.set_wait_time(.1)
+	timer_low.connect("timeout", self, "low_update")
+	get_node("/root/Main").add_child(timer_low)
+	timer_low.start()
+	
+	var timer_upper_low = Timer.new()
+	timer_upper_low.set_wait_time(1)
+	timer_upper_low.connect("timeout", self, "upper_low_update")
+	get_node("/root/Main").add_child(timer_upper_low)
+	timer_upper_low.start()
 
-func low_update():
-	emit_signal("low_update")
+func low_update(): emit_signal("low_update")
+func upper_low_update(): emit_signal("upper_low_update")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
